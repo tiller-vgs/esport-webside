@@ -136,3 +136,6 @@
 .navigation-link:hover {
   @apply border-b-2 border-primary;
 }
+html, body{
+  overflow: hidden;
+}
