@@ -128,3 +128,11 @@
     @apply font-sans;
   }
 }
+
+.navigation-link {
+  @apply relative h-full flex items-center px-4 border-b-2 border-transparent;
+}
+
+.navigation-link:hover {
+  @apply border-b-2 border-primary;
+}
