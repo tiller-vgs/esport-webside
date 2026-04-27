@@ -137,5 +137,5 @@
   @apply border-b-2 border-primary;
 }
 html, body{
-  overflow: hidden;
+  overflow-x: hidden;
 }
