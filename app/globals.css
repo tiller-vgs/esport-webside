@@ -136,3 +136,7 @@
 .navigation-link:hover {
   @apply border-b-2 border-primary;
 }
+
+.footer-link-item {
+  @apply px-4;
+}
