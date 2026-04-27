@@ -1,11 +1,11 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { signOut, useSession } from "@/lib/auth-client";
 
 export default function Navbar() {
-  const { theme, setTheme } = useTheme();
+  const session = useSession();
 
   return (
     <>
@@ -26,12 +26,34 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="flex items-center gap-2">
-          <Button>
-            <Link href="/signin">Logg Inn</Link>
-          </Button>
-          <Button variant="outline" className="border-primary border-2">
-            <Link href="/signup">Registrer deg</Link>
-          </Button>
+          {!session.data?.user ? (
+            <>
+              <Button>
+                <Link href="/signin">Logg Inn</Link>
+              </Button>
+              <Button variant="outline" className="border-primary border-2">
+                <Link href="/signup">Registrer deg</Link>
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button
+                variant="outline"
+                className="border-primary border-2"
+                onClick={() => {
+                  signOut();
+                  window.location.href = "/";
+                }}
+              >
+                Logg Ut
+              </Button>
+              {session.data?.user.role === "ADMIN" && (
+                <Button>
+                  <Link href="/admin">Admin</Link>
+                </Button>
+              )}
+            </>
+          )}
         </div>
       </nav>
     </>
