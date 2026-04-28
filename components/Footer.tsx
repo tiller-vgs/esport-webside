@@ -3,7 +3,11 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-primary text-white">
+    <footer className="relative bg-background text-white border-t-2 border-primary overflow-hidden">
+      <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
+        <div className="w-[100%] h-[50%] bg-primary/15 rounded-full blur-3xl" />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-10">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-3">
@@ -22,13 +26,22 @@ export default function Footer() {
 
         <nav className="flex flex-col gap-3">
           <h3 className="font-semibold text-lg">Navigasjon</h3>
-          <Link href="/" className="footer-link-item">
+          <Link
+            href="/"
+            className="footer-link-item hover:text-primary transition"
+          >
             Home
           </Link>
-          <Link href="/signin" className="footer-link-item">
+          <Link
+            href="/signin"
+            className="footer-link-item hover:text-primary transition"
+          >
             Logg Inn
           </Link>
-          <Link href="/signup" className="footer-link-item">
+          <Link
+            href="/signup"
+            className="footer-link-item hover:text-primary transition"
+          >
             Registrer Deg
           </Link>
         </nav>
@@ -49,14 +62,14 @@ export default function Footer() {
             <a
               href="https://web.trondelagfylke.no/tiller-videregaende-skole/utdanningsprogrammer/studieforberedende-utdanningsprogram/idrettsfag/"
               target="_blank"
-              className="hover:text-accent transition"
+              className="hover:text-primary transition"
             >
               <ShieldHalf size={24} />
             </a>
             <a
               href="https://www.facebook.com/TillerEsport/?locale=nb_NO"
               target="_blank"
-              className="hover:text-accent transition"
+              className="hover:text-primary transition"
             >
               <Users size={24} />
             </a>
@@ -64,7 +77,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-gray-700 text-center py-4 text-sm text-gray-400">
+      <div className="border-t border-primary text-center py-4 text-sm text-primary">
         © {new Date().getFullYear()} Tiller E-Sport. All rights reserved.
       </div>
     </footer>
