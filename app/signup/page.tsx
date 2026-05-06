@@ -58,7 +58,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center items-center h-[calc(100vh-72px)]">
       <Card className="w-full my-10 sm:max-w-md">
         <CardHeader>
           <CardTitle>Opprett Bruker</CardTitle>
