@@ -135,7 +135,13 @@
 .navigation-link:hover {
   @apply border-b-2 border-primary;
 }
+<<<<<<< AndreasHeroHeader
+html, body{
+  overflow-x: hidden;
+}
+=======
 
 .footer-link-item {
   @apply px-4;
 }
+>>>>>>> main
