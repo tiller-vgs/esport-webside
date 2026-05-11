@@ -3,6 +3,8 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { Toaster } from "@/components/ui/sonner";
 
 
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-sans" });
@@ -28,6 +30,8 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <Toaster />
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
