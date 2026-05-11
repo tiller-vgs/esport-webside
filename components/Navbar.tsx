@@ -1,54 +1,80 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { signOut, useSession } from "@/lib/auth-client";
 
 export default function Navbar() {
   const session = useSession();
+  const pathname = usePathname();
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname?.startsWith(href);
 
   return (
     <>
-      <nav className="flex h-18 px-5 border-b-2 border-primary justify-between">
-        <div className="flex">
-          <div className="flex items-center">
-            <img
-              src="tiller-esport-logo.png"
-              alt="Tiller E-Sport Logo"
-              className="h-12 w-auto"
-            />
-            <h1 className="text-2xl font-semibold mx-3">
-              <Link href="/">Tiller E-Sport</Link>
-            </h1>
-          </div>
-          <div className="flex items-center">
-            <Link href="/" className="navigation-link">
-              Home
+      <section className="z-[999] flex w-full items-center border-b-2 border-primary bg-background-primary lg:min-h-18 lg:px-[5%]">
+        <div className="mx-auto size-full lg:grid lg:grid-cols-[0.375fr_1fr_0.375fr] lg:items-center lg:justify-between lg:gap-4">
+          <div className="flex min-h-16 items-center justify-between px-[5%] md:min-h-18 lg:min-h-full lg:px-0">
+            <Link href="/" className="flex items-center gap-4">
+              <img
+                src="tiller-esport-logo.png"
+                alt="Tiller E-Sport Logo"
+                className="h-12 w-auto"
+              />
+              <h1 className="font-semibold text-2xl">Tiller E-Sport</h1>
             </Link>
           </div>
-        </div>
-        <div className="flex items-center gap-2">
-          {session.data?.user && (
-            <>
-              <Button
-                variant="outline"
-                className="border-primary border-2"
-                onClick={() => {
-                  signOut();
-                  window.location.href = "/";
-                }}
-              >
-                Logg Ut
-              </Button>
-              {session.data?.user.role === "ADMIN" && (
-                <Button>
-                  <Link href="/admin">Admin</Link>
+          <div className="overflow-hidden px-[5%] text-center lg:flex lg:items-center lg:justify-center lg:px-0 lg:[--height-closed:auto] lg:[--height-open:auto]">
+            <Link
+              href="/"
+              className="block py-3 text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2"
+            >
+              Hjem
+            </Link>
+            <Link
+              href="/news"
+              className="block py-3 text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2"
+            >
+              Nyheter
+            </Link>
+          </div>
+          <div className="hidden justify-self-end lg:block">
+            {session.data?.user && (
+              <>
+                <Button
+                  variant="outline"
+                  className="border-primary border-2"
+                  onClick={() => {
+                    signOut();
+                    window.location.href = "/";
+                  }}
+                >
+                  Logg Ut
                 </Button>
-              )}
-            </>
-          )}
+                {session.data?.user.role === "ADMIN" && (
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="border-primary border-2"
+                  >
+                    <Link
+                      href="/admin"
+                      className={cn(
+                        "navigation-link",
+                        isActive("/admin") && "border-primary text-primary",
+                      )}
+                    >
+                      Admin
+                    </Link>
+                  </Button>
+                )}
+              </>
+            )}
+          </div>
         </div>
-      </nav>
+      </section>
     </>
   );
 }
