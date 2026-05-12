@@ -128,15 +128,6 @@
   }
 }
 
-.navigation-link {
-  @apply relative h-full flex items-center px-4 border-b-2 border-transparent;
-}
-
-.navigation-link:hover,
-.navigation-link.active {
-  @apply border-b-2 border-primary;
-}
-
 .footer-link-item {
   @apply px-4;
 }
