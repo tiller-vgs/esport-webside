@@ -6,8 +6,6 @@ export default async function AdminDashboard() {
 
   return (
     <main className="h-screen">
-      <h1 className="text-2xl font-bold">Admin Dashboard</h1>
-      <p className="mt-2">{user.name}, velkommen til admin dashboardet</p>
       <AdminAdTable />
     </main>
   );

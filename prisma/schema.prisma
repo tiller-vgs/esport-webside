@@ -40,20 +40,35 @@ model User {
   displayUsername String?
 
   @@unique([email])
-  @@map("user")
   @@unique([username])
+  @@map("user")
 }
 
 model NewsArticle {
-  id            String    @id
-  title         String
-  description   String
-  content       String
-  category      String
-  date          DateTime @default(now())
-  image         String?
+  id          String   @id
+  title       String
+  description String
+  content     String
+
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
+
+  date        DateTime @default(now())
+  image       String?
 
   status Status @default(UTKAST)
+
+  @@index([status])
+  @@index([date])
+  @@index([categoryId])
+}
+
+model Category {
+  id       String        @id @default(cuid())
+  name     String        @unique
+  slug     String        @unique
+
+  articles NewsArticle[]
 }
 
 model Session {
