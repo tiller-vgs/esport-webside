@@ -129,10 +129,17 @@
   }
 }
 
-html, body{
+html,
+body {
   overflow-x: hidden;
 }
 
 .footer-link-item {
   @apply px-4;
+}
+
+.accent-line {
+  width: 40px;
+  height: 2px;
+  background-color: var(--primary);
 }
