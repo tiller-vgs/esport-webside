@@ -17,6 +17,12 @@ enum Roles {
   ADMIN
 }
 
+enum Status {
+  PUBLISERT
+  UTKAST
+  ARKIVERT
+}
+
 model User {
   id            String    @id
   name          String
@@ -36,6 +42,18 @@ model User {
   @@unique([email])
   @@map("user")
   @@unique([username])
+}
+
+model NewsArticle {
+  id            String    @id
+  title         String
+  description   String
+  content       String
+  category      String
+  date          DateTime @default(now())
+  image         String?
+
+  status Status @default(UTKAST)
 }
 
 model Session {
