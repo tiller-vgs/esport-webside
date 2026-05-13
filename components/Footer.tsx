@@ -34,12 +34,6 @@ export default function Footer() {
           >
             Logg Inn
           </Link>
-          <Link
-            href="/signup"
-            className="footer-link-item hover:text-black transition"
-          >
-            Registrer Deg
-          </Link>
         </nav>
 
         <div className="flex flex-col gap-4">
@@ -48,10 +42,6 @@ export default function Footer() {
           <div className="flex items-center gap-2">
             <Mail size={18} />
             <span className="text-sm">testemail@gmail.com</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Smartphone size={18} />
-            <span className="text-sm">+47 12345678</span>
           </div>
 
           <div className="flex gap-4 mt-2">

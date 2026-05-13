@@ -1,18 +1,11 @@
-import Advertisment from "@/components/Advertisment";
-import Image from "next/image";
 import VideoSection from "@/components/VideoSection";
+import HeroHeader from "@/components/HeroHeader";
+import Advertisment from "@/components/Advertisment";
+
 export default function Home() {
   return (
-    <main className="flex flex-col">
-      
-      <div className="relative w-full h-screen">
-        <Image
-          src="/image0.jpeg"
-          alt=""
-          fill
-          className="object-cover object-[center_140%]"
-        />
-      </div>
+    <main>
+      <HeroHeader />
       <section className="bg-black text-white py-12 px-6">
         <Advertisment />
       </section>

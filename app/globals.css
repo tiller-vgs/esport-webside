@@ -129,10 +129,10 @@
   }
 }
 
-.navigation-link {
-  @apply relative h-full flex items-center px-4 border-b-2 border-transparent;
+html, body{
+  overflow-x: hidden;
 }
 
-.navigation-link:hover {
-  @apply border-b-2 border-primary;
+.footer-link-item {
+  @apply px-4;
 }
