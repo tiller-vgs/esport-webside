@@ -45,12 +45,12 @@ model User {
 }
 
 model NewsArticle {
-  id          String   @id
+  id          Int    @id @default(autoincrement())
   title       String
   description String
   content     String
 
-  categoryId  String
+  categoryId  Int
   category    Category @relation(fields: [categoryId], references: [id])
 
   date        DateTime @default(now())
@@ -64,7 +64,7 @@ model NewsArticle {
 }
 
 model Category {
-  id       String        @id @default(cuid())
+  id       Int    @id @default(autoincrement())
   name     String        @unique
   slug     String        @unique
 

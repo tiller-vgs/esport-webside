@@ -16,10 +16,9 @@ const videos: Video[] = [
 
 export default function VideoSection() {
   return (
-    <section className="flex flex-col items-center justify-center py-12 px-6 bg-black border-yellow-400 border-2 rounded-2xl w-full">
-      <h2 className="text-3xl font-bold mb-6">
-        Våre videoer
-      </h2>
+    <section className="flex flex-col items-center justify-center py-12 px-6 border-yellow-400 border-2 rounded-2xl w-full">
+      <h2 className="text-3xl font-bold">Våre videoer</h2>
+      <div className="accent-line my-5"></div>
 
       <div className="grid gap-6 w-full max-w-5xl md:grid-cols-2">
         {videos.map((video, index) => (

@@ -3,21 +3,18 @@ import { Button } from "./ui/button";
 function HeroHeader() {
   return (
     <section className="pt-16 md:pt-24 lg:pt-28">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute left-[-10rem] top-[-10rem] h-[25rem] w-[25rem] rounded-full lg:bg-primary/15 md:bg-primary/10 sm:bg-primary/5 blur-3xl" />
-
-        <div className="absolute top-[5rem] h-[20rem] w-[20rem] rounded-full lg:bg-primary/15 md:bg-primary/10 sm:bg-primary/5 blur-3xl" />
-
-        <div className="absolute bottom-[-12rem] left-1/2 h-[30rem] w-[30rem] -translate-x-1/2 rounded-full lg:bg-primary/20 md:bg-primary/15 sm:bg-primary/10 blur-3xl" />
-
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
-      </div>
       <div className="container relative">
         <div className="flex flex-col items-center">
           <div className="rb-12 mb-12 text-center md:mb-18 lg:mb-20">
             <div className="w-full max-w-lg">
+              <img
+                src="tiller-esport-logo.png"
+                className="mx-auto mb-6 lg:h-64 md:h-48 sm:h-24 w-auto"
+                alt="Tiller E-Sport Hero Image"
+              />
               <h1 className="mb-5 text-2xl font-bold md:mb-6 md:text-4xl lg:text-6xl">
-                Velkommen til{" "}
+                Velkommen til
+                <br />
                 <span className="text-primary">Tiller E-Sport</span>!
               </h1>
               <p className="md:text-md">
