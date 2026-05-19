@@ -1,3 +1,9 @@
+export type NewsArticleCategory = {
+  id: number;
+  name: string;
+  slug: string;
+};
+
 export type NewsArticle = {
   id: number;
   title: string;
@@ -6,13 +12,10 @@ export type NewsArticle = {
 
   categoryId: number;
 
-  category: {
-    id: number;
-    name: string;
-    slug: string;
-  };
+  category: NewsArticleCategory;
 
   date: string;
+  dateInput: string;
 
   image?: string | null;
 

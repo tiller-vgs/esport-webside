@@ -108,10 +108,6 @@ export default function LoginPage() {
             <Button type="submit" form="login">
               Logg Inn
             </Button>
-
-            <Button variant="ghost">
-              <Link href="/signup">Har du ikke en konto?</Link>
-            </Button>
           </Field>
         </CardFooter>
       </Card>

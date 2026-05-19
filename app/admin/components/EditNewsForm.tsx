@@ -29,10 +29,6 @@ import type { NewsArticle } from "../../types/types";
 
 type NewsArticleFormValues = z.infer<typeof newsArticleSchema>;
 
-function formatDateForInput(date: string) {
-  return new Date(date).toISOString().slice(0, 10);
-}
-
 export default function EditNewsForm({ article }: { article: NewsArticle }) {
   const [open, setOpen] = useState(false);
   const queryClient = useQueryClient();
@@ -41,7 +37,7 @@ export default function EditNewsForm({ article }: { article: NewsArticle }) {
     values: {
       title: article.title,
       category: article.category?.name ?? "",
-      date: formatDateForInput(article.date),
+      date: article.dateInput,
       status: article.status,
       image: article.image ?? "",
       description: article.description,
