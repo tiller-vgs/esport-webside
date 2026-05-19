@@ -12,6 +12,7 @@ function HeroHeader() {
 
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
       </div>
+
       <div className="container relative">
         <div className="flex flex-col items-center">
           <div className="rb-12 mb-12 text-center md:mb-18 lg:mb-20">
@@ -20,26 +21,31 @@ function HeroHeader() {
                 Velkommen til{" "}
                 <span className="text-primary">Tiller E-Sport</span>!
               </h1>
+
               <p className="md:text-md">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Suspendisse varius enim in eros elementum tristique. Duis
                 cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
                 commodo diam libero vitae erat.
               </p>
+
               <div className="mt-6 flex items-center justify-center gap-x-4 md:mt-8">
                 <Button size="lg" className="p-4 text-lg">
                   Nyheter
                 </Button>
+
                 <Button
                   size="lg"
                   variant="outline"
                   className="border-primary border-2 p-4 text-lg"
+                  asChild
                 >
-                  Videoer
+                  <a href="#videos">Videoer</a>
                 </Button>
               </div>
             </div>
           </div>
+
           <div className="border-y-2 border-primary">
             <img
               src="esport-background.png"

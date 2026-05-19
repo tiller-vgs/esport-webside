@@ -136,3 +136,6 @@ html, body{
 .footer-link-item {
   @apply px-4;
 }
+html {
+  scroll-behavior: smooth;
+}

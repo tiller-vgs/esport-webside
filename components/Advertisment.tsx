@@ -67,7 +67,6 @@ export default function Advertisment() {
                     className="overflow-hidden border border-yellow-400/20 bg-zinc-900 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400"
                   >
 
-                    {/* Image */}
                     <div className="relative overflow-hidden">
                       <img
                         src={card.image}

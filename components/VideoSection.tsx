@@ -1,22 +1,20 @@
-type Video = {
-  title: string;
-  embed: string;
-};
-
-const videos: Video[] = [
+const videos = [
   {
-    title: "Info om E-Sport",
-    embed: "https://www.youtube.com/embed/nt2VwmvzYtE",
+    title: 'Esport Highlight 1',
+    embed: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
   },
   {
-    title: "Tilbud Tiller E-Sport",
-    embed: "https://www.youtube.com/embed/l_YW4IU9Lgc",
+    title: 'Esport Highlight 2',
+    embed: 'https://www.youtube.com/embed/oHg5SJYRHA0',
   },
 ];
 
 export default function VideoSection() {
   return (
-    <section className="flex flex-col items-center justify-center py-12 px-6 bg-black border-yellow-400 border-2 rounded-2xl w-full">
+    <section
+      id="videos"
+      className="flex flex-col items-center justify-center py-12 px-6 bg-black border-yellow-400 border-2 rounded-2xl w-full"
+    >
       <h2 className="text-3xl font-bold mb-6">
         Våre videoer
       </h2>
