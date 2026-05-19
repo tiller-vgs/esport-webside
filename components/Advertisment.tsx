@@ -6,88 +6,129 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 import { Card, CardContent } from "@/components/ui/card";
 
-function Advertisment() {
-  const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [open3, setOpen3] = useState(false);
+type ContentCard = {
+  title: string;
+  author: string;
+  description: string;
+  image: string;
+};
+
+const cards: ContentCard[] = [
+  {
+    title: "Våre lag",
+    author: "Av Andreas og Shope",
+    description:
+      "Les mer om våre konkurranselag, treninger og turneringer.",
+    image: "/esport-background.png",
+  },
+  {
+    title: "Nyheter",
+    author: "Av Andreas og Shope",
+    description:
+      "Få med deg siste nytt fra Tiller E-Sport og kommende events.",
+    image: "/esport-background.png",
+  },
+];
+
+export default function Advertisment() {
+  const [activeCard, setActiveCard] = useState<number | null>(null);
 
   return (
-    <div className="w-screen min-h-screen flex flex-col items-center p-10">
+    <section className="w-full bg-black text-white px-[5%] py-16 md:py-24">
+      <div className="container mx-auto">
 
-      <Carousel className="w-full max-w-6xl">
-        <CarouselContent>
+        {/* Header */}
+        <div className="mb-12 max-w-2xl">
+          <p className="mb-3 font-semibold text-yellow-400">
+            Tiller E-Sport
+          </p>
 
-          <CarouselItem>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <h1 className="text-5xl font-bold md:text-7xl">
+            Våre nyheter
+          </h1>
+
+          <p className="mt-4 text-gray-300">
+            Hold deg oppdatert på lagene våre, events og aktiviteter.
+          </p>
+        </div>
 
         
-              <Card>
-                <img src="image0.jpeg" className="w-full h-52 object-cover" />
-                <CardContent className="p-4">
-                  <p className="text-sm text-gray-500">Av Andreas og Shope</p>
-                  <h2 className="font-bold mt-2">Våre lag</h2>
+        
+            
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
 
-                  <button className="border-4  bg-sky-500 border-sky-600" onClick={() => setOpen1(!open1)}>
-                    Les mer
-                  </button>
+                {cards.map((card, index) => (
+                  <Card
+                    key={index}
+                    className="overflow-hidden border border-yellow-400/20 bg-zinc-900 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400"
+                  >
 
-                  {open1 && (
-                    <p className="mt-2">Mer info om lagene</p>
-                  )}
-                </CardContent>
-              </Card>
+                    {/* Image */}
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={card.image}
+                        alt={card.title}
+                        className="h-60 w-full object-cover transition duration-300 hover:scale-105"
+                      />
+                    </div>
 
-              
-              <Card>
-                <img src="image0.jpeg" className="w-full h-52 object-cover" />
-                <CardContent className="p-4">
-                  <p className="text-sm text-gray-500">Av Andreas og Shope</p>
-                  <h2 className="font-bold mt-2">Nyheter</h2>
+                    <CardContent className="p-6">
 
-                  <button className="border-4 bg-sky-500 border-sky-600" onClick={() => setOpen2(!open2)}>
-                    Les mer
-                  </button>
+                      <div className="mb-4 flex items-center gap-3">
+                        <span className="rounded bg-yellow-400 px-2 py-1 text-xs font-semibold text-black">
+                          E-Sport
+                        </span>
 
-                  {open2 && (
-                    <p className="mt-2">Mer info om nyheter</p>
-                  )}
-                </CardContent>
-              </Card>
+                        <p className="text-sm text-gray-400">
+                          
+                        </p>
+                      </div>
 
-              
-              <Card>
-                <img src="image0.jpeg" className="w-full h-52 object-cover" />
-                <CardContent className="p-4">
-                  <p className="text-sm text-gray-500">Av Andreas og Shope</p>
-                  <h2 className="font-bold mt-2">Videoer</h2>
+                      <p className="mb-2 text-sm text-gray-500">
+                        {card.author}
+                      </p>
 
-                  <button className="border-4 border-sky-600 bg-sky-500" onClick={() => setOpen3(!open3)}>
-                    Les mer
-                  </button>
+                      <h2 className="mb-3 text-2xl font-bold">
+                        {card.title}
+                      </h2>
 
-                  {open3 && (
-                    <div><p className="mt-2">Mer info om videoer</p> <img src="tiller-esport-logo.png" /></div>
-                  )}
-                </CardContent>
-              </Card>
+                      <p className="text-gray-300">
+                        {card.description}
+                      </p>
 
-            </div>
-          </CarouselItem>
+                      <button
+                        onClick={() =>
+                          setActiveCard(
+                            activeCard === index ? null : index
+                          )
+                        }
+                        className="mt-6 inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition"
+                      >
+                        Les mer
+                      </button>
 
-        </CarouselContent>
+                      {activeCard === index && (
+                        <div className="mt-4 border-t border-zinc-700 pt-4 text-gray-300">
+                          Dette er ekstra informasjon om{" "}
+                          <span className="font-semibold">
+                            {card.title}
+                          </span>.
+                        </div>
+                      )}
 
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
+                    </CardContent>
+                  </Card>
+                ))}
 
-    </div>
+              </div>
+            
+          
+        
+      </div>
+    </section>
   );
-}
-
-export default Advertisment;
+}   
