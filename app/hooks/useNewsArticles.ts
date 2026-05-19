@@ -31,3 +31,28 @@ export const useNewsArticles = (page: number) => {
     },
   });
 };
+
+export const useNewsArticlesLandingPage = () => {
+  const limit = 3;
+
+  return useQuery<NewsArticlesResponse>({
+    queryKey: ["newsArticles", "landingPage", "published"],
+
+    queryFn: async () => {
+      const response = await fetch(
+        `/api/news-articles/published?limit=${limit}`,
+        {
+          method: "GET",
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch news articles");
+      }
+
+      const data = await response.json();
+
+      return data;
+    },
+  });
+};

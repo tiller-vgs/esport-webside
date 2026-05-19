@@ -146,6 +146,7 @@ export default function AdminAdTable() {
                     {...field}
                     id="create-news-date"
                     aria-invalid={fieldState.invalid}
+                    type="date"
                     autoComplete="off"
                     placeholder="Skriv inn dato"
                   />

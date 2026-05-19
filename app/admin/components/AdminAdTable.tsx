@@ -129,9 +129,7 @@ export default function AdminAdTable() {
                 <TableCell className="max-w-[200px] truncate">
                   {article.image}
                 </TableCell>
-                <TableCell>
-                  {new Date(article.date).toLocaleDateString()}
-                </TableCell>
+                <TableCell>{article.date}</TableCell>
                 <TableCell>{article.status}</TableCell>
 
                 <TableCell className="flex gap-1">

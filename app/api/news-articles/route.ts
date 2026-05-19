@@ -12,6 +12,21 @@ function slugify(value: string) {
     .replace(/^-+|-+$/g, "");
 }
 
+const displayDateFormatter = new Intl.DateTimeFormat("nb-NO", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+  timeZone: "Europe/Oslo",
+});
+
+function serializeArticleDate<T extends { date: Date }>(article: T) {
+  return {
+    ...article,
+    date: displayDateFormatter.format(article.date),
+    dateInput: article.date.toISOString().slice(0, 10),
+  };
+}
+
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
@@ -33,10 +48,7 @@ export async function GET(req: Request) {
       db.newsArticle.count(),
     ]);
 
-    const safeArticles = articles.map((a) => ({
-      ...a,
-      date: a.date.toISOString(),
-    }));
+    const safeArticles = articles.map(serializeArticleDate);
 
     return NextResponse.json({ data: safeArticles, total });
   } catch {
@@ -76,10 +88,7 @@ export async function POST(req: Request) {
       },
     });
 
-    return NextResponse.json({
-      ...result,
-      date: result.date.toISOString(),
-    });
+    return NextResponse.json(serializeArticleDate(result));
   } catch {
     return NextResponse.json(
       { error: "Failed to create article" },
@@ -129,10 +138,7 @@ export async function PATCH(req: Request) {
       },
     });
 
-    return NextResponse.json({
-      ...result,
-      date: result.date.toISOString(),
-    });
+    return NextResponse.json(serializeArticleDate(result));
   } catch {
     return NextResponse.json(
       { error: "Failed to update article" },
