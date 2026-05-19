@@ -71,7 +71,6 @@ export default function Advertisment() {
                   >
                     Les mer
                   </button>
-
                   {activeCard === article.id && (
                     <div className="mt-4 border-t border-zinc-700 pt-4 text-gray-300">
                       {article.content}
