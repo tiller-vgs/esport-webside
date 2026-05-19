@@ -1,84 +1,83 @@
-function Nyheter() {
-  return (
-    <main className="min-h-screen bg-black text-white px-6 md:px-20 py-20 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-yellow-500/10 blur-[120px]" />
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
+"use client";
 
+import { Card, CardContent } from "@/components/ui/card";
+import { useState } from "react";
+import { useNewsArticlesNewsPage } from "../hooks/useNewsArticles";
+import { NewsArticle } from "../types/types";
+
+function Nyheter() {
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+
+  const { data, isLoading } = useNewsArticlesNewsPage();
+
+  const articles = data?.data ?? [];
+
+  if (articles.length === 0) {
+    return "";
+  }
+
+  return (
+    <main className="min-h-screen px-6 md:px-20 py-20 relative overflow-hidden">
       <div className="relative z-10">
         <h1 className="text-6xl md:text-8xl font-bold">
-          Våre <span className="text-yellow-400">nyheter</span>
+          Våre <span className="text-primary">nyheter</span>
         </h1>
 
         <p className="text-gray-300 text-xl mt-6">
           Hold deg oppdatert på lagene våre, events og aktiviteter.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-20">
+        <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
+          {isLoading ? (
+            <div className="p-10 text-center">Laster artikler...</div>
+          ) : (
+            articles.map((article: NewsArticle) => (
+              <Card
+                key={article.id}
+                className="overflow-hidden border border-primary/20 bg-zinc-900 transition-all duration-300 hover:-translate-y-1 hover:border-primary"
+              >
+                <div className="relative overflow-hidden">
+                  <img
+                    src={article.image || "/esport-background.png"}
+                    alt={article.title}
+                    className="h-60 w-full object-cover transition duration-300 hover:scale-105"
+                  />
+                </div>
 
-          <div className="bg-[#111] border border-yellow-500/30 rounded-3xl overflow-hidden">
+                <CardContent className="p-6">
+                  <div className="mb-4 flex items-center gap-3">
+                    <span className="rounded bg-primary px-2 py-1 text-xs font-semibold text-black">
+                      {article.date}
+                    </span>
+                  </div>
 
-            <img
-              src="/image0.jpeg"
-              className="w-full h-[350px] object-cover"
-            />
+                  <p className="mb-2 text-sm text-gray-500">
+                    {article.category?.name}
+                  </p>
 
-            <div className="p-8">
+                  <h2 className="mb-3 text-2xl font-bold">{article.title}</h2>
 
-              <span className="bg-yellow-400 text-black px-4 py-2 rounded-xl font-semibold">
-                E-Sport
-              </span>
+                  <p className="text-gray-300">{article.description}</p>
 
-              <p className="text-gray-400 mt-6">
-                Av Andreas og Shope
-              </p>
-
-              <h2 className="text-3xl font-bold mt-3">
-                Nye treningstider
-              </h2>
-
-              <p className="text-gray-300 mt-4">
-                Vi har oppdatert treningstidene for lagene våre.
-              </p>
-
-              <button className="mt-6 px-6 py-3 bg-yellow-500 text-black rounded-full font-semibold">
-                Les mer
-              </button>
-
-            </div>
-          </div>
-
-          <div className="bg-[#111] border border-yellow-500/30 rounded-3xl overflow-hidden">
-
-            <img
-              src="/image0.jpeg"
-              className="w-full h-[350px] object-cover"
-            />
-
-            <div className="p-8">
-
-              <span className="bg-yellow-400 text-black px-4 py-2 rounded-xl font-semibold">
-                Turnering
-              </span>
-
-              <p className="text-gray-400 mt-6">
-                Av Andreas og Shope
-              </p>
-
-              <h2 className="text-3xl font-bold mt-3">
-                Ny regional cup
-              </h2>
-
-              <p className="text-gray-300 mt-4">
-                Tiller E-Sport skal delta i en ny regional turnering.
-              </p>
-
-              <button className="mt-6 px-6 py-3 bg-yellow-500 text-black rounded-full font-semibold">
-                Les mer
-              </button>
-
-            </div>
-          </div>
-
+                  <button
+                    onClick={() =>
+                      setActiveCard(
+                        activeCard === article.id ? null : article.id,
+                      )
+                    }
+                    className="mt-6 inline-flex items-center gap-2 text-primary hover:text-primary transition"
+                  >
+                    Les mer
+                  </button>
+                  {activeCard === article.id && (
+                    <div className="mt-4 border-t border-zinc-700 pt-4 text-gray-300">
+                      {article.content}
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            ))
+          )}
         </div>
       </div>
     </main>

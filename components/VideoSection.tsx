@@ -16,15 +16,20 @@ const videos: Video[] = [
 
 export default function VideoSection() {
   return (
-    <section
-      id="videos"
-      className="flex flex-col items-center justify-center py-12 px-6 bg-black border-yellow-400 border-2 rounded-2xl w-full"
-    >
-      <h2 className="text-3xl font-bold mb-6 text-white">
-        Våre videoer
-      </h2>
+    <section id="videos" className="flex flex-col px-[5%] py-10 w-full">
+      <div className="mb-12 w-full text-right">
+        <p className="mb-3 font-semibold text-primary">Tiller E-Sport</p>
 
-      <div className="grid gap-6 w-full max-w-5xl md:grid-cols-2">
+        <h1 className="text-5xl font-bold md:text-7xl">
+          Våre <span className="text-primary">videoer</span>
+        </h1>
+
+        <p className="mt-4 text-gray-300">
+          Hold deg oppdatert på hva som skjer med våre videoer.
+        </p>
+      </div>
+
+      <div className="grid gap-6 w-full md:grid-cols-2">
         {videos.map((video, index) => (
           <div
             key={index}

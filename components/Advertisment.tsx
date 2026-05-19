@@ -17,12 +17,14 @@ export default function Advertisment() {
   }
 
   return (
-    <section className="w-full px-[5%] py-10 md:py-24">
+    <section id="nyheter" className="w-full px-[5%] py-10 md:py-24">
       <div className="container mx-auto">
         <div className="mb-12 max-w-2xl">
           <p className="mb-3 font-semibold text-primary">Tiller E-Sport</p>
 
-          <h1 className="text-5xl font-bold md:text-7xl">Våre nyheter</h1>
+          <h1 className="text-5xl font-bold md:text-7xl">
+            Våre <span className="text-primary">nyheter</span>
+          </h1>
 
           <p className="mt-4 text-gray-300">
             Hold deg oppdatert på lagene våre, events og aktiviteter.
