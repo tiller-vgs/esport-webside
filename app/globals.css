@@ -129,13 +129,18 @@
   }
 }
 
-html, body{
+html,
+body {
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .footer-link-item {
   @apply px-4;
 }
-html {
-  scroll-behavior: smooth;
+
+.accent-line {
+  width: 40px;
+  height: 2px;
+  background-color: var(--primary);
 }

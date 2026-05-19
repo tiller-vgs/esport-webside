@@ -6,12 +6,14 @@ export default function Home() {
   return (
     <main>
       <HeroHeader />
-      <section className="bg-black text-white py-12 px-6">
-        <Advertisment />
-      </section>
-      <section className="bg-black text-white py-12 px-6">
-        <VideoSection />
-      </section>
+      <div className="py-8 px-5 gap-4">
+        <section>
+          <Advertisment />
+        </section>
+        <section>
+          <VideoSection />
+        </section>
+      </div>
     </main>
   );
 }

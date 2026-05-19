@@ -17,6 +17,12 @@ enum Roles {
   ADMIN
 }
 
+enum Status {
+  PUBLISERT
+  UTKAST
+  ARKIVERT
+}
+
 model User {
   id            String    @id
   name          String
@@ -34,8 +40,35 @@ model User {
   displayUsername String?
 
   @@unique([email])
-  @@map("user")
   @@unique([username])
+  @@map("user")
+}
+
+model NewsArticle {
+  id          Int    @id @default(autoincrement())
+  title       String
+  description String
+  content     String
+
+  categoryId  Int
+  category    Category @relation(fields: [categoryId], references: [id])
+
+  date        DateTime @default(now())
+  image       String?
+
+  status Status @default(UTKAST)
+
+  @@index([status])
+  @@index([date])
+  @@index([categoryId])
+}
+
+model Category {
+  id       Int    @id @default(autoincrement())
+  name     String        @unique
+  slug     String        @unique
+
+  articles NewsArticle[]
 }
 
 model Session {
