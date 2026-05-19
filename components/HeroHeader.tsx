@@ -46,13 +46,7 @@ function HeroHeader() {
             </div>
           </div>
 
-          <div className="border-y-2 border-primary">
-            <img
-              src="esport-background.png"
-              className="size-full object-cover"
-              alt="Tiller E-Sport Hero Image"
-            />
-          </div>
+         
         </div>
       </div>
     </section>

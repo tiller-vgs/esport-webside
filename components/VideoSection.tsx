@@ -1,11 +1,16 @@
-const videos = [
+type Video = {
+  title: string;
+  embed: string;
+};
+
+const videos: Video[] = [
   {
-    title: 'Esport Highlight 1',
-    embed: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    title: "Info om Tiller E-Sport",
+    embed: "https://www.youtube.com/embed/nt2VwmvzYtE",
   },
   {
-    title: 'Esport Highlight 2',
-    embed: 'https://www.youtube.com/embed/oHg5SJYRHA0',
+    title: "Tilbud og aktiviteter",
+    embed: "https://www.youtube.com/embed/l_YW4IU9Lgc",
   },
 ];
 
@@ -15,7 +20,7 @@ export default function VideoSection() {
       id="videos"
       className="flex flex-col items-center justify-center py-12 px-6 bg-black border-yellow-400 border-2 rounded-2xl w-full"
     >
-      <h2 className="text-3xl font-bold mb-6">
+      <h2 className="text-3xl font-bold mb-6 text-white">
         Våre videoer
       </h2>
 
@@ -23,7 +28,7 @@ export default function VideoSection() {
         {videos.map((video, index) => (
           <div
             key={index}
-            className="bg-black-900 rounded-2xl overflow-hidden shadow-lg"
+            className="bg-zinc-900 rounded-2xl overflow-hidden shadow-lg"
           >
             <iframe
               className="w-full aspect-video"
